@@ -142,6 +142,7 @@
 }
 
 .custom-scrollbar-track-div-v {
+    z-index: 999;
     position: absolute;
     visibility: hidden;
     border-radius: 40px;
