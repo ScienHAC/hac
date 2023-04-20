@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #body {
+            transition: all 1s ease-in-out;
+            height: 100vh;
+            width: 100vw;
+            background-color: #1e2933;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #main_scienhac {
+            transition: all 1s ease-in-out;
+            height: 100vh;
+            width: 100vw;
+            background-color: #1e2933;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+
+        @media only screen and (max-width: 1000px) {
+
+            .mainbtn>p {
+                font-size: 1.6vw;
+                filter: brightness(200%);
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                font-weight: bolder;
+                background-image: repeating-linear-gradient(35deg, #ff00ea, #00a2ff);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .mainbtn {
+                filter: drop-shadow(2px 2px 5px rgb(15, 40, 41));
+                align-items: center;
+                justify-content: center;
+                opacity: 0.7;
+                background-image: linear-gradient(120deg, rgb(146, 71, 121), rgb(25, 57, 66));
+                top: 50%;
+                display: flex;
+                cursor: pointer;
+                border: none;
+                overflow: hidden;
+                position: fixed;
+                border-radius: 37%;
+                padding: 2% 4% 2% 4%;
+                box-shadow: 0px 5px 20px 3px #051a2bea;
+                transition: all 1s ease-in-out;
+            }
+
+            .mainbtn:hover {
+                opacity: 0.9;
+                filter: brightness(120%) drop-shadow(1px 4px rgba(23, 32, 36, 0.932));
+            }
+
+            .mainbtn::after {
+                content: '';
+                opacity: 1;
+                filter: brightness(200%);
+            }
+
+            .mainbtn::before {
+                content: '';
+                opacity: 1;
+            }
+
+            .mainbtn:active {
+                padding: 3% 5% 3% 5%;
+                opacity: 0.9;
+                filter: contrast(120%);
+            }
+
+            .schac1,
+            .schac2,
+            .schac3 {
+                transition: all 1s ease-in-out;
+                border-radius: 50%;
+                margin-top: -50%;
+                z-index: 99;
+                width: 40vw;
+                height: 40vw;
+                position: absolute;
+                border: 1px solid #3d4852bb;
+            }
+
+            .scienhac_home {
+                margin-top: -50%;
+                z-index: 99;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                width: 20vw;
+                height: auto;
+                animation: schac1 2s ease-in-out infinite forwards;
+            }
+
+            .schac1 {
+                animation: scbox1 2s ease-in infinite forwards;
+            }
+
+            .schac2 {
+                animation-delay: 1s;
+                animation: scbox2 2s ease-in infinite forwards;
+            }
+
+            .schac3 {
+                animation-delay: 2s;
+                animation: scbox3 2s ease-in infinite forwards;
+            }
+        }
+
+
+        @media only screen and (min-width: 1000px) {
+
+            .mainbtn>p {
+                font-size: 1.3vw;
+                filter: brightness(200%);
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                font-weight: bolder;
+                background-image: repeating-linear-gradient(35deg, #ff00ea, #00a2ff);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .mainbtn {
+                filter: drop-shadow(2px 2px 5px rgb(15, 40, 41));
+                align-items: center;
+                justify-content: center;
+                opacity: 0.7;
+                background-image: linear-gradient(120deg, rgb(146, 71, 121), rgb(25, 57, 66));
+                top: 60%;
+                display: flex;
+                cursor: pointer;
+                border: none;
+                overflow: hidden;
+                position: fixed;
+                border-radius: 37%;
+                padding: 2% 3% 2% 3%;
+                box-shadow: 0px 5px 20px 3px #051a2bea;
+                transition: all 1s ease-in-out;
+            }
+
+            .mainbtn:hover {
+                opacity: 0.9;
+                filter: brightness(120%) drop-shadow(1px 4px rgba(23, 32, 36, 0.932));
+            }
+
+            .mainbtn::after {
+                content: '';
+                opacity: 1;
+                filter: brightness(200%);
+            }
+
+            .mainbtn::before {
+                content: '';
+                opacity: 1;
+            }
+
+            .mainbtn:active {
+                padding: 3% 5% 3% 5%;
+                opacity: 0.9;
+                filter: contrast(120%);
+            }
+
+            .schac1,
+            .schac2,
+            .schac3 {
+                transition: all 1s ease-in-out;
+                border-radius: 50%;
+                margin-top: -18%;
+                z-index: 99;
+                width: 20vw;
+                height: 20vw;
+                position: absolute;
+                border: 1px solid #3d4852bb;
+            }
+
+            .scienhac_home {
+                margin-top: -18%;
+                z-index: 99;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                width: 10vw;
+                height: auto;
+                animation: schac2 2s ease-in-out infinite forwards;
+            }
+
+            .schac1 {
+                animation: scbox4 2s ease-in infinite forwards;
+            }
+
+            .schac2 {
+                animation-delay: 1s;
+                animation: scbox5 2s ease-in infinite forwards;
+            }
+
+            .schac3 {
+                animation-delay: 2s;
+                animation: scbox6 2s ease-in infinite forwards;
+
+            }
+        }
+
+        @keyframes schac1 {
+            from {
+                opacity: 0.3;
+                width: 20vw;
+            }
+
+            to {
+                opacity: 0.7;
+                width: 25vw;
+            }
+        }
+
+        @keyframes schac2 {
+            from {
+                opacity: 0.3;
+                width: 10vw;
+            }
+
+            to {
+                opacity: 0.7;
+                width: 15vw;
+            }
+        }
+
+        @keyframes scbox1 {
+            from {
+                opacity: 1;
+                width: 20vw;
+                height: 20vw;
+            }
+
+            to {
+                opacity: 0;
+                width: 50vw;
+                height: 50vw;
+            }
+        }
+
+        @keyframes scbox2 {
+            from {
+                opacity: 1;
+                width: 20vw;
+                height: 20vw;
+            }
+
+            to {
+                opacity: 0;
+                width: 40vw;
+                height: 40vw;
+            }
+        }
+
+        @keyframes scbox3 {
+            from {
+                opacity: 1;
+                width: 20vw;
+                height: 20vw;
+            }
+
+            to {
+                opacity: 0;
+                width: 30vw;
+                height: 30vw;
+            }
+        }
+
+        @keyframes scbox4 {
+            from {
+                opacity: 1;
+                width: 10vw;
+                height: 10vw;
+            }
+
+            to {
+                opacity: 0;
+                width: 25vw;
+                height: 25vw;
+            }
+        }
+
+        @keyframes scbox5 {
+            from {
+                opacity: 1;
+                width: 10vw;
+                height: 10vw;
+            }
+
+            to {
+                opacity: 0;
+                width: 20vw;
+                height: 20vw;
+            }
+        }
+
+        @keyframes scbox6 {
+            from {
+                opacity: 1;
+                width: 10vw;
+                height: 10vw;
+            }
+
+            to {
+                opacity: 0;
+                width: 15vw;
+                height: 15vw;
+            }
+        }
+
+        #main2 {
+            filter: brightness(80%) contrast(200%) hue-rotate(20deg) drop-shadow(2px 2px 4px rgb(79, 111, 129)) saturate(1.9);
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            z-index: 1;
+            background-color: #09776500;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            background-size: cover;
+            animation: main2 10s infinite forwards;
+        }
+
+        #main2 svg,
+        #main2 path {
+            margin-top: -7%;
+            animation-delay: 1s;
+            opacity: 0.7;
+        }
+
+        #main1 {
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            z-index: 4;
+            background-color: #313b46;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 100%;
+            position: fixed;
+            background-size: cover;
+            animation: main1 20s infinite forwards;
+        }
+
+        @keyframes main1 {
+            0% {
+                box-shadow: 0px 0px 2px rgb(79, 111, 129);
+                filter: hue-rotate(0deg) contrast(120%) blur(0px) drop-shadow(0px 0px 0px rgb(79, 111, 129));
+            }
+
+            25% {
+                box-shadow: 2px 0px 2px rgb(93, 133, 156);
+                filter: hue-rotate(2.5deg) contrast(120%) blur(0.5px) drop-shadow(2px 10px 5px rgb(79, 111, 129));
+            }
+
+            50% {
+                box-shadow: 0px 0px 0px rgb(79, 111, 129);
+                filter: hue-rotate(5deg) contrast(120%) blur(1px) drop-shadow(0px 0px 10px rgb(79, 111, 129));
+            }
+
+            75% {
+                box-shadow: -2px 0px 2px rgb(93, 133, 156);
+                filter: hue-rotate(2.5deg) contrast(120%) blur(0.5px) drop-shadow(-2px -10px 5px rgb(79, 111, 129));
+            }
+
+            100% {
+                box-shadow: 0px 0px 2px rgb(79, 111, 129);
+                filter: hue-rotate(0deg) contrast(120%) blur(0px) drop-shadow(0px 0px 0px rgb(79, 111, 129));
+            }
+        }
+
+        @keyframes main2 {
+            0% {
+                box-shadow: 0px 0px 1px rgb(79, 111, 129);
+                filter: brightness(80%) contrast(100%) hue-rotate(0deg) drop-shadow(0px 2px 2px rgb(79, 111, 129)) saturate(1);
+            }
+
+            25% {
+                box-shadow: 2px 0px 2px rgb(93, 133, 156);
+                filter: brightness(80%) contrast(120%) hue-rotate(10deg) drop-shadow(2px 2px 4px rgb(79, 111, 129)) saturate(1.5);
+            }
+
+            50% {
+                box-shadow: 0px 0px 0px rgb(79, 111, 129);
+                filter: brightness(80%) contrast(150%) hue-rotate(20deg) drop-shadow(2px 2px 4px rgb(79, 111, 129)) saturate(1.9);
+            }
+
+            75% {
+                box-shadow: -2px 0px 2px rgb(93, 133, 156);
+                filter: brightness(80%) contrast(120%) hue-rotate(10deg) drop-shadow(2px 2px 4px rgb(79, 111, 129)) saturate(1.5);
+            }
+
+            100% {
+                box-shadow: 0px 0px 2px rgb(79, 111, 129);
+                filter: brightness(80%) contrast(100%) hue-rotate(0deg) drop-shadow(2px 2px 4px rgb(79, 111, 129)) saturate(1);
+            }
+        }
+
+        div {
+            outline: none !important;
+            will-change: transform;
+        }
+
+        #svg {
+            filter: drop-shadow(2px 2px 2px rgb(79, 111, 129));
+            position: fixed;
+            opacity: 0.2;
+            margin-top: -10%;
+            z-index: 1;
+            transform-origin: center;
+            transform-box: fill-box;
+        }
+
+        #svg:nth-child(1) path {
+            display: block;
+            animation: svg1 30s infinite forwards alternate;
+        }
+
+        #svg:nth-child(2) path {
+            display: block;
+            animation: svg2 40s infinite forwards alternate-reverse;
+        }
+
+        #svg:nth-child(3) path {
+            display: block;
+            animation: svg3 50s infinite forwards reverse;
+        }
+
+        @keyframes svg1 {
+            0% {
+                d: path("M0,64L48,80C96,96,192,128,288,165.3C384,203,480,245,576,272C672,299,768,309,864,288C960,267,1056,213,1152,165.3C1248,117,1344,75,1392,53.3L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z");
+            }
+
+            50% {
+                opacity: 0.5;
+                d: path("M0,320L48,304C96,288,192,256,288,245.3C384,235,480,245,576,213.3C672,181,768,107,864,69.3C960,32,1056,32,1152,64C1248,96,1344,160,1392,192L1440,224L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z");
+            }
+
+            100% {
+                d: path("M0,64L48,80C96,96,192,128,288,165.3C384,203,480,245,576,272C672,299,768,309,864,288C960,267,1056,213,1152,165.3C1248,117,1344,75,1392,53.3L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z");
+            }
+        }
+
+        @keyframes svg2 {
+            0% {
+                d: path("M0,256L48,261.3C96,267,192,277,288,240C384,203,480,117,576,96C672,75,768,117,864,160C960,203,1056,245,1152,245.3C1248,245,1344,203,1392,181.3L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z");
+            }
+
+            50% {
+                opacity: 0.5;
+                d: path("M0,224L48,229.3C96,235,192,245,288,245.3C384,245,480,235,576,208C672,181,768,139,864,133.3C960,128,1056,160,1152,186.7C1248,213,1344,235,1392,245.3L1440,256L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z");
+            }
+
+            100% {
+                d: path("M0,256L48,261.3C96,267,192,277,288,240C384,203,480,117,576,96C672,75,768,117,864,160C960,203,1056,245,1152,245.3C1248,245,1344,203,1392,181.3L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z");
+            }
+        }
+
+        @keyframes svg3 {
+            0% {
+                d: path("M0,32L60,80C120,128,240,224,360,256C480,288,600,256,720,224C840,192,960,160,1080,160C1200,160,1320,192,1380,208L1440,224L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z");
+            }
+
+            50% {
+                opacity: 0.5;
+                d: path("M0,256L60,229.3C120,203,240,149,360,144C480,139,600,181,720,213.3C840,245,960,267,1080,256C1200,245,1320,203,1380,181.3L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z");
+            }
+
+            100% {
+                d: path("M0,32L60,80C120,128,240,224,360,256C480,288,600,256,720,224C840,192,960,160,1080,160C1200,160,1320,192,1380,208L1440,224L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z");
+            }
+        }
+
+        .ripple_effect {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: ripples 1s linear infinite;
+        }
+
+        @keyframes ripples {
+            0% {
+                width: 0px;
+                height: 0px;
+                opacity: 0.5;
+            }
+
+            100% {
+                width: 1000px;
+                height: 1000px;
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<div id="body">
+    <div id="main_scienhac">
+        <div id="main1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" id="svg" width="100%">
+                <defs>
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color: rgba(219, 79, 231, 0.63); stop-opacity: 1" />
+                        <stop offset="100%" style="stop-color: #9bfa65; stop-opacity: 1" />
+                    </linearGradient>
+                </defs>
+                <path fill-opacity="1"
+                    d="M0,64L48,80C96,96,192,128,288,165.3C384,203,480,245,576,272C672,299,768,309,864,288C960,267,1056,213,1152,165.3C1248,117,1344,75,1392,53.3L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+                    fill="url(#grad1)"></path>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" id="svg" width="100%">
+                <defs>
+                    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color: rgb(241, 102, 218); stop-opacity: 1" />
+                        <stop offset="100%" style="stop-color: rgb(140, 213, 235); stop-opacity: 1" />
+                    </linearGradient>
+                </defs>
+                <path fill-opacity="1"
+                    d="M0,256L48,261.3C96,267,192,277,288,240C384,203,480,117,576,96C672,75,768,117,864,160C960,203,1056,245,1152,245.3C1248,245,1344,203,1392,181.3L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
+                    fill="url(#grad2)"></path>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" id="svg" width="100%">
+                <defs>
+                    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color: rgb(245, 154, 230); stop-opacity: 1" />
+                        <stop offset="100%" style="stop-color: rgb(99, 207, 235); stop-opacity: 1" />
+                    </linearGradient>
+                </defs>
+                <path fill-opacity="1"
+                    d="M0,32L60,80C120,128,240,224,360,256C480,288,600,256,720,224C840,192,960,160,1080,160C1200,160,1320,192,1380,208L1440,224L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
+                    fill="url(#grad3)"></path>
+            </svg>
+        </div>
+        <div id="main2"></div>
+        <div class="schac1"></div>
+        <div class="schac2"></div>
+        <div class="schac3"></div>
+        <img class="scienhac_home"
+            src="https://1.bp.blogspot.com/-Hl2LdQb7ReM/Yant6IP37hI/AAAAAAAAAbo/vxaKHKIPI_ktlPZ4Hh4IozhQnz-CdL6zwCNcBGAsYHQ/s960/Scienhac_logo_favicon.png" />
+        <button type="button" class='mainbtn' style="z-index:
+    99;">
+            <p>Browse Blog</p>
+        </button>
+    </div>
+    <script type="application/javascript">
+        /*lst = []
+        const inner = document.querySelectorAll('#svg');
+        let b = '';
+        inner.forEach((a) => {
+            b = a.outerHTML + b;
+            document.querySelector('#main2').innerHTML = b;
+        });
+
+        const inner1 = document.querySelectorAll('#svg path');
+        inner1.forEach((e) => {
+            const p = e.getAttribute("d");
+            lst.push(p);
+        });
+        let rnd = () => {
+            const random = Math.floor(Math.random() * lst.length);
+            lst1 = lst[random]
+            return lst1
+        };
+        inner.forEach((a) => {
+            a.addEventListener('mouseenter', () => {
+                interval = setTimeout(() => {
+                    var animationName = ['svg1', 'svg2', 'svg3'];
+                    var styleSheet = document.styleSheets[0];
+
+                    for (var i = 0; i < styleSheet.cssRules.length; i++) {
+                        var rule = styleSheet.cssRules[i];
+                        if (rule.name == animationName[0] && rule.type === CSSRule.KEYFRAMES_RULE) {
+                            var keyframes = rule;
+                            keyframes.deleteRule("0%");
+                            keyframes.deleteRule("50%");
+                            keyframes.deleteRule("100%");
+                            keyframes.appendRule(`0% { d: path("${rnd()}"); }`);
+                            keyframes.appendRule(`50% { d: path("${rnd()}"); }`);
+                            keyframes.appendRule(`100% { d: path("${rnd()}"); }`);
+                            break;
+                        }
+                        if (rule.name == animationName[1] && rule.type === CSSRule.KEYFRAMES_RULE) {
+                            var keyframes = rule;
+                            keyframes.deleteRule("0%");
+                            keyframes.deleteRule("50%");
+                            keyframes.deleteRule("100%");
+                            keyframes.appendRule(`0% { d: path("${rnd()}"); }`);
+                            keyframes.appendRule(`50% { d: path("${rnd()}"); }`);
+                            keyframes.appendRule(`100% { d: path("${rnd()}"); }`);
+                            break;
+                        }
+                        if (rule.name == animationName[2] && rule.type === CSSRule.KEYFRAMES_RULE) {
+                            var keyframes = rule;
+                            keyframes.deleteRule("0%");
+                            keyframes.deleteRule("50%");
+                            keyframes.deleteRule("100%");
+                            keyframes.appendRule(`0% { d: path("${rnd()}"); }`);
+                            keyframes.appendRule(`50% { d: path("${rnd()}"); }`);
+                            keyframes.appendRule(`100% { d: path("${rnd()}"); }`);
+                            break;
+                        }
+                    }
+                }, 50000);
+            });
+            /*a.addEventListener('mouseleave', () => {
+                setTimeout(() => {
+                    clearInterval(interval);
+                }, 500);
+            });*/
+        /*});*/
+
+        /*lst = []
+        const inner = document.querySelectorAll('#svg');
+        let b = '';
+        inner.forEach((a) => {
+            b = a.outerHTML + b;
+            document.querySelector('#main2').innerHTML = b;
+        });
+
+        const inner1 = document.querySelectorAll('#svg path');
+        inner1.forEach((e) => {
+            const p = e.getAttribute("d");
+            lst.push(p);
+        });
+        let rnd = () => {
+            const random = Math.floor(Math.random() * lst.length);
+            lst1 = lst[random]
+            return lst1
+        };
+        inner.forEach((a) => {
+            a.addEventListener('mouseenter', () => {
+                interval = setTimeout(() => {
+                    var animationName = ['svg1', 'svg2', 'svg3'];
+                    var styleSheet = document.styleSheets[0];
+
+                    for (var i = 0; i < styleSheet.cssRules.length; i++) {
+                        var rule = styleSheet.cssRules[i];
+                        if (rule.name == animationName[0] && rule.type === CSSRule.KEYFRAMES_RULE) {
+                            var keyframes = rule;
+                            keyframes.deleteRule("0%");
+                            keyframes.deleteRule("50%");
+                            keyframes.deleteRule("100%");
+                            keyframes.appendRule(`0% { d: path("${rnd()}"); }`);
+                            keyframes.appendRule(`50% { d: path("${rnd()}"); }`);
+                            keyframes.appendRule(`100% { d: path("${rnd()}"); }`);
+                            break;
+                        }
+                        if (rule.name == animationName[1] && rule.type === CSSRule.KEYFRAMES_RULE) {
+                            var keyframes = rule;
+                            keyframes.deleteRule("0%");
+                            keyframes.deleteRule("50%");
+                            keyframes.deleteRule("100%");
+                            keyframes.appendRule(`0% { d: path("${rnd()}"); }`);
+                            keyframes.appendRule(`50% { d: path("${rnd()}"); }`);
+                            keyframes.appendRule(`100% { d: path("${rnd()}"); }`);
+                            break;
+                        }
+                        if (rule.name == animationName[2] && rule.type === CSSRule.KEYFRAMES_RULE) {
+                            var keyframes = rule;
+                            keyframes.deleteRule("0%");
+                            keyframes.deleteRule("50%");
+                            keyframes.deleteRule("100%");
+                            keyframes.appendRule(`0% { d: path("${rnd()}"); }`);
+                            keyframes.appendRule(`50% { d: path("${rnd()}"); }`);
+                            keyframes.appendRule(`100% { d: path("${rnd()}"); }`);
+                            break;
+                        }
+                    }
+                }, 50000);
+            });
+            /*a.addEventListener('mouseleave', () => {
+                setTimeout(() => {
+                    clearInterval(interval);
+                }, 500);
+            });*/
+        /*});*/
+
+        const svgElements = document.querySelectorAll('#svg');
+        const paths = document.querySelectorAll('#svg path');
+        const animationNames = ['svg1', 'svg2', 'svg3'];
+
+        const getRandomPath = () => {
+            const randomIndex = Math.floor(Math.random() * paths.length);
+            return paths[randomIndex].getAttribute('d');
+        };
+
+        svgElements.forEach((svgElement) => {
+            let intervalId;
+
+            svgElement.addEventListener('mouseenter', () => {
+                intervalId = setInterval(() => {
+                    const styleSheet = document.styleSheets[0];
+
+                    for (let i = 0; i < styleSheet.cssRules.length; i++) {
+                        const rule = styleSheet.cssRules[i];
+                        if (animationNames.includes(rule.name) && rule.type === CSSRule.KEYFRAMES_RULE) {
+                            const keyframes = rule;
+                            keyframes.deleteRule('0%');
+                            keyframes.deleteRule('50%');
+                            keyframes.deleteRule('100%');
+                            keyframes.appendRule(`0% { d: ${getRandomPath()}; }`);
+                            keyframes.appendRule(`50% { d: ${getRandomPath()}; }`);
+                            keyframes.appendRule(`100% { d: ${getRandomPath()}; }`);
+                        }
+                    }
+                }, 50000);
+            });
+
+            svgElement.addEventListener('mouseleave', () => {
+                clearInterval(intervalId);
+            });
+        });
+
+
+        const btn_ripple = document.querySelectorAll('.mainbtn');
+        btn_ripple.forEach((button_ripple) => {
+            button_ripple.addEventListener('click', (e) => {
+                let x = e.clientX - e.target.offsetLeft;
+                let y = e.clientY - e.target.offsetTop;
+                let ripple = document.createElement('span');
+                ripple.setAttribute('class', 'ripple_effect');
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                button_ripple.appendChild(ripple);
+                setTimeout(() => {
+                    ripple.remove();
+                }, 1000);
+                e.preventDefault();
+            });
+        });
+        //.menu_btn
+        /*document.addEventListener('DOMContentLoaded', () => {
+            let mainbtn = document.querySelector('.mainbtn');
+            mainbtn.addEventListener('click', () => {
+                let w = document.querySelector('#main_scienhac').outerHTML;
+                document.querySelector('#main_scienhac').remove();
+                document.querySelector('#outer-wrapper').style.display = 'block';
+                /*document.querySelector('#body1').style.display = 'none';
+                document.querySelector('#preloader-preloaded').style.display = 'block';
+                document.querySelector('#main1,#main2,.schac1,.schac2,.schac3,.scienhac_home,.mainbtn').innerHTML = "";
+                document.querySelector('#main1,#main2,.schac1,.schac2,.schac3,.scienhac_home,.mainbtn').remove();
+                window.addEventListener('load', () => {
+                    document.querySelector('#outer-wrapper').style.display = 'block';
+                    document.querySelector('#preloader-preloaded').style.display = 'none';
+                    document.querySelector('#body').style.display = 'none';
+                });
+            });
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            mainbtn.addEventListener('click', () => {
+                document.querySelector('#outer-wrapper').style.display = 'block !important';
+                document.querySelector('#main_scienhac,#main1,#main2,.schac1,.schac2,.schac3,.scienhac_home,.mainbtn').remove();
+            });
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            window.addEventListener('load',()=>{
+                document.querySelector('#preloader-preloaded').style.display='none';
+            });
+        });*/
+
+    </script>
+    </body>
+
+</html>

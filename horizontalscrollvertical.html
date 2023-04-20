@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/night-owl.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="https://scienhac.github.io/scien-hub/scrollbar.css"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <!-- <link rel="stylesheet" href="https://unpkg.com/simplebar@5.3.5/dist/simplebar.min.css" />
+    <script src="https://unpkg.com/simplebar@5.3.5/dist/simplebar.min.js"></script> -->
+
+</head>
+
+<body>
+    <script src="main.js"></script>
+    <!-- <script src="https://scienhac.github.io/scien-hub/scrollbar.js"></script> -->
+    <pre>
+        <h1 style="text-align: center;">How to make custom scrollbar</h1>
+    </pre>
+    <hr />
+    <hr />
+    <hr />
+    <div class="code-container">
+        <pre class="code-block">
+        <code>
+            &lt;html&gt;
+            &lt;div class="do"&gt;&lt;/div&gt;
+            &lt;p&gt;This is a paragraph &lt;/p&gt;
+            &lt;/html&gt;&lt;html&gt;
+            &lt;div class="do"&gt;&lt;/div&gt;
+            &lt;p&gt;This is a paragraph &lt;/p&gt;
+            &lt;/html&gt;&lt;console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)console.log(a.scrollHeight)
+        </code>
+        </pre>
+    </div>
+    <div>
+        <div class="code-container">
+            <pre class="code-block">
+        <code>
+            &lt;html&gt;
+            &lt;div class="do"&gt;&lt;/div&gt;
+            &lt;p&gt;This is a paragraph &lt;/p&gt;
+            &lt;/html&gt;&lt;html&gt;
+            &lt;div class="do"&gt;&lt;/div&gt;
+            &lt;p&gt;This is a paragraph &lt;/p&gt;
+            &lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;ffffff&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;&lt;/html&gt;
+        </code>
+        </pre>
+        </div>
+        <div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+            <script>
+                //new SimpleBar(document.querySelector('.code-container'));
+                let x = () => {
+                    var codeContainer = document.querySelectorAll('.code-container');
+                    var codeBlocks = document.querySelectorAll('.code-block');
+                    for (let i = 0; i < codeContainer.length; i++) {
+                        var btn_p = document.createElement('div');
+                        btn_p.setAttribute('class', 'btn_copy');
+                        codeContainer[i].appendChild(btn_p);
+                        btn_p.innerHTML = '<button class="copy-button">Copy</button>';
+                    }
+                    var copyButtons = document.querySelectorAll('.copy-button');
+
+                    copyButtons.forEach(function (copyButton, index) {
+                        var clipboard = new ClipboardJS(copyButton, {
+                            target: function () {
+                                return codeBlocks[index];
+                            }
+                        });
+                        let copy_val = copyButton.innerText;
+                        clipboard.on('success', function (e) {
+                            copyButton.innerText = 'Copied!';
+                            setTimeout(() => {
+                                copyButton.innerText = copy_val;
+                            }, 500)
+                            e.clearSelection();
+                        });
+                    });
+                }
+                x();
+            </script>
+
+            <div style="position: relative;width: 50%;overflow: visible;">
+                <p class="a" style="width
+: 100%; height: 300px; overflow: auto;cursor: auto;">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis
+                    hiujghijfgfgifhuigfsuighsifdgnbfsvkljbbckkkkkkkkkkkkkkkkkkkkkkkkxjvbfdijfgnbfdijgbfdsijcnvgkljcnbffffffffffffffffffffffffffffffffffffffff
+                    Lorem ipsum dolor, sit amet
+                    fgghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkhhhhhhhhhhhhhhhhreeruy8edyurfuieydfutiydhuyehuirfthyeduitryhgeuriyrhtguiegtruiyguihgfnhgkjfhgfchgiohfighfuijghfijghfijhgjfhgijhfjghfhhhhhhhhhhhhhhhhhhhhhconsectetur
+                    adipisicing elit.
+                    Obcaecati qui alias unde! Maiores, nihil iste neque, quisquam quod dicta accusantium reprehenderit
+                    voluptatibus tempora architecto modi doloremque cumque suscipit repellendus, rem unde quis ipsam
+                    dolore
+                    sapiente magni molestiae voluptates. Voluptate error facilis consequatur non molestias sapiente
+                    atque
+                    doloribus animi amet ab nemo commodi odio dolore eveniet dolorum, quaerat neque eum doloremque nisi
+                    veniam
+                    dignissimos maiores culpa labore nostrum! Recusandae rem quas earum. Accusamus inventore quae eos
+                    reprehenderit nobis, illo dolore obcaecati ad fuga voluptas deleniti, delectus cum officia magni
+                    sed,
+                    beatae
+                    assumenda dolores earum. Dicta fuga, ipsa inventore doloribus nobis distinctio.
+                    magnam, quo ratione explicabo
+                    laudantium aperiam, temporibus repellendus dolores nihil dolorum nostrum aut quaerat totam
+                    laboriosam
+                    molestias
+                    commodi odit ipsum ab minus! Culpa maxime iure itaque in magni tempora ratione blanditiis commodi
+                    eos
+                    doloremque
+                    molestias reiciendis minus, harum vero officiis veritatis deleniti assumenda voluptas ex impedit
+                    necessitatibus.
+                    Enim alias molestiae, dicta, eaque laboriosam omnis aperiam deleniti accusantium libero, unde
+                    doloribus
+                    temporibus asperiores quis optio quisquam nostrum dolor fugiat in nemo eligendi suscipit. Temporibus
+                    quae
+                    consequatur voluptates aperiam, ex rem illo quos asperiores? Culpa quasi dignissimos delectus ipsa
+                    reiciendis
+                    consequatur, dolorum aperiam, iure quod eveniet qui optio repellat tempore ab blanditiis earum
+                    nostrum.
+                    Veniam
+                    beatae ex laborum. Dolore maiores, alias non veniam nam earum pariatur suscipit neque, iure,
+                    quisquam
+                    repudiandae odit expedita. Vero incidunt voluptatibus iure iste et quis, alias ex culpa
+                    reprehenderit
+                    tempora
+                    porro dolores, cupiditate libero deleniti? Sed, quae odit sequi corporis quibusdam dolorem
+                    provident,
+                    voluptatum
+                    quasi nulla commodi ea sit laboriosam? Velit, labore voluptas ab consequatur expedita hic modi
+                    dolor,
+                    reprehenderit vel atque consectetur impedit. Iste, porro id ipsum fuga, sapiente nam vitae quisquam
+                    ducimus
+                    officiis dolor quam neque, explicabo harum recusandae. Voluptate, delectus. Error suscipit, soluta
+                    laboriosam
+                    architecto consectetur dicta ut doloremque voluptatem aliquam perspiciatis? Saepe tempore dicta
+                    debitis
+                    laborum.
+                    Unde rem corporis, reprehenderit molestias natus nulla ut suscipit atque? Minima, aliquam? Dolor
+                    doloremque eum
+                    quos recusandae nobis minima, excepturi nemo provident porro pariatur tenetur eius ducimus
+                    distinctio
+                    eligendi
+                    nisi beatae illo aliquam cupiditate. Harum unde provident officiis non in quisquam sequi libero
+                    facere
+                    quos
+                    illum maxime ipsum earum alias necessitatibus repellendus consectetur, nihil quaerat. Corrupti, ab
+                    voluptatem
+                    quisquam beatae fugiat, tempore esse consectetur tempora quo dignissimos aperiam magnam illum
+                    eligendi
+                    praesentium? Doloremque maiores recusandae alias adipisci enim tenetur rem, rerum dolorem quia magni
+                    eius velit
+                    animi, labore architecto sapiente soluta cum, iste saepe. Similique laborum repudiandae eos cum
+                    voluptatem
+                    suscipit quibusdam ab aliquid impedit, nulla quis delectus fugiat minus itaque reiciendis, esse ea.
+                    Totam,
+                    explicabo, harum ipsa illum blanditiis cumque nihil voluptas eaque ea obcaecati iste minus amet quae
+                    facilis
+                    eligendi nulla iusto at? Animi, eum, sunt ratione fugiat quibusdam fuga sit aspernatur sequi harum
+                    illo
+                    iure,
+                    veritatis quod et. Laudantium voluptatibus esse vitae praesentium natus, corrupti saepe magnam
+                    autem,
+                    delectus
+                    nobis repudiandae soluta recusandae repellat obcaecati necessitatibus officiis, nulla voluptas
+                    deserunt
+                    voluptate? Ipsum, sit. Tenetur assumenda eum libero alias amet repudiandae nihil sint adipisci
+                    nostrum
+                    officiis,
+                    eos corrupti magni, qui minus odio. Pariatur officia iure quo molestiae perspiciatis ut quos
+                    nesciunt at
+                    quae
+                    dolorem tempora architecto odio, voluptate corrupti voluptatum facilis ab magni nam. Eius quaerat
+                    dignissimos
+                    esse assumenda odio cumque voluptas eveniet adipisci praesentium atque. Nulla rerum labore, natus
+                    facere
+                    dicta
+                    voluptatibus doloremque eligendi aspernatur id dolorem voluptatem nam explicabo necessitatibus saepe
+                    beatae,
+                    laboriosam tempora, totam laudantium sint eaque corporis non? Dolor neque soluta laudantium dolorum
+                    rem
+                    eligendi
+                    cumque veniam ipsum ipsam ut id quasi eius maxime, earum vitae voluptate ab. Commodi, cumque libero?
+                    Nobis
+                    reprehenderit nesciunt voluptatum, quidem hic laboriosam earum iusto inventore.</p>
+            </div>
+            <hr />
+            <hr />
+            <hr />
+            <br />
+            <br />
+            <br />
+            <div style="position: relative;width: 50%;overflow: visible;">
+                <p class="a" style="width
+    : 100%; height: 300px; overflow: auto;cursor: auto;">
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis
+                    hiujghijfgfgifhuigfsuighsifdgnbfsvkljbbckkkkkkkkkkkkkkkkkkkkkkkkxjvbfdijfgnbfdijgbfdsijcnvgkljcnbffffffffffffffffffffffffffffffffffffffff
+                    Lorem ipsum dolor, sit amet
+                    fgghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkhhhhhhhhhhhhhhhhreeruy8edyurfuieydfutiydhuyehuirfthyeduitryhgeuriyrhtguiegtruiyguihgfnhgkjfhgfchgiohfighfuijghfijghfijhgjfhgijhfjghfhhhhhhhhhhhhhhhhhhhhhconsectetur
+                    adipisicing elit.
+                    Obcaecati qui alias unde! Maiores, nihil iste neque, quisquam quod dicta accusantium reprehenderit
+                    voluptatibus tempora architecto modi doloremque cumque suscipit repellendus, rem unde quis ipsam
+                    dolore
+                    sapiente magni molestiae voluptates. Voluptate error facilis consequatur non molestias sapiente
+                    atque
+                    doloribus animi amet ab nemo commodi odio dolore eveniet dolorum, quaerat neque eum doloremque nisi
+                    veniam
+                    dignissimos maiores culpa labore nostrum! Recusandae rem quas earum. Accusamus inventore quae eos
+                    reprehenderit nobis, illo dolore obcaecati ad fuga voluptas deleniti, delectus cum officia magni
+                    sed,
+                    beatae
+                    assumenda dolores earum. Dicta fuga, ipsa inventore doloribus nobis distinctio.
+                    magnam, quo ratione explicabo
+                    laudantium aperiam, temporibus repellendus dolores nihil dolorum nostrum aut quaerat totam
+                    laboriosam
+                    molestias
+                    commodi odit ipsum ab minus! Culpa maxime iure itaque in magni tempora ratione blanditiis commodi
+                    eos
+                    doloremque
+                    molestias reiciendis minus, harum vero officiis veritatis deleniti assumenda voluptas ex impedit
+                    necessitatibus.
+                    Enim alias molestiae, dicta, eaque laboriosam omnis aperiam deleniti accusantium libero, unde
+                    doloribus
+                    temporibus asperiores quis optio quisquam nostrum dolor fugiat in nemo eligendi suscipit. Temporibus
+                    quae
+                    consequatur voluptates aperiam, ex rem illo quos asperiores? Culpa quasi dignissimos delectus ipsa
+                    reiciendis
+                    consequatur, dolorum aperiam, iure quod eveniet qui optio repellat tempore ab blanditiis earum
+                    nostrum.
+                    Veniam
+                    beatae ex laborum. Dolore maiores, alias non veniam nam earum pariatur suscipit neque, iure,
+                    quisquam
+                    repudiandae odit expedita. Vero incidunt voluptatibus iure iste et quis, alias ex culpa
+                    reprehenderit
+                    tempora
+                    porro dolores, cupiditate libero deleniti? Sed, quae odit sequi corporis quibusdam dolorem
+                    provident,
+                    voluptatum
+                    quasi nulla commodi ea sit laboriosam? Velit, labore voluptas ab consequatur expedita hic modi
+                    dolor,
+                    reprehenderit vel atque consectetur impedit. Iste, porro id ipsum fuga, sapiente nam vitae quisquam
+                    ducimus
+                    officiis dolor quam neque, explicabo harum recusandae. Voluptate, delectus. Error suscipit, soluta
+                    laboriosam
+                    architecto consectetur dicta ut doloremque voluptatem aliquam perspiciatis? Saepe tempore dicta
+                    debitis
+                    laborum.
+                    Unde rem corporis, reprehenderit molestias natus nulla ut suscipit atque? Minima, aliquam? Dolor
+                    doloremque eum
+                    quos recusandae nobis minima, excepturi nemo provident porro pariatur tenetur eius ducimus
+                    distinctio
+                    eligendi
+                    nisi beatae illo aliquam cupiditate. Harum unde provident officiis non in quisquam sequi libero
+                    facere
+                    quos
+                    illum maxime ipsum earum alias necessitatibus repellendus consectetur, nihil quaerat. Corrupti, ab
+                    voluptatem
+                    quisquam beatae fugiat, tempore esse consectetur tempora quo dignissimos aperiam magnam illum
+                    eligendi
+                    praesentium? Doloremque maiores recusandae alias adipisci enim tenetur rem, rerum dolorem quia magni
+                    eius velit
+                    animi, labore architecto sapiente soluta cum, iste saepe. Similique laborum repudiandae eos cum
+                    voluptatem
+                    suscipit quibusdam ab aliquid impedit, nulla quis delectus fugiat minus itaque reiciendis, esse ea.
+                    Totam,
+                    explicabo, harum ipsa illum blanditiis cumque nihil voluptas eaque ea obcaecati iste minus amet quae
+                    facilis
+                    eligendi nulla iusto at? Animi, eum, sunt ratione fugiat quibusdam fuga sit aspernatur sequi harum
+                    illo
+                    iure,
+                    veritatis quod et. Laudantium voluptatibus esse vitae praesentium natus, corrupti saepe magnam
+                    autem,
+                    delectus
+                    nobis repudiandae soluta recusandae repellat obcaecati necessitatibus officiis, nulla voluptas
+                    deserunt
+                    voluptate? Ipsum, sit. Tenetur assumenda eum libero alias amet repudiandae nihil sint adipisci
+                    nostrum
+                    officiis,
+                    eos corrupti magni, qui minus odio. Pariatur officia iure quo molestiae perspiciatis ut quos
+                    nesciunt at
+                    quae
+                    dolorem tempora architecto odio, voluptate corrupti voluptatum facilis ab magni nam. Eius quaerat
+                    dignissimos
+                    esse assumenda odio cumque voluptas eveniet adipisci praesentium atque. Nulla rerum labore, natus
+                    facere
+                    dicta
+                    voluptatibus doloremque eligendi aspernatur id dolorem voluptatem nam explicabo necessitatibus saepe
+                    beatae,
+                    laboriosam tempora, totam laudantium sint eaque corporis non? Dolor neque soluta laudantium dolorum
+                    rem
+                    eligendi
+                    cumque veniam ipsum ipsam ut id quasi eius maxime, earum vitae voluptate ab. Commodi, cumque libero?
+                    Nobis
+                    reprehenderit nesciunt voluptatum, quidem hic laboriosam earum iusto inventore.</p>
+            </div>
+
+</body>
+
+
+
+</html>

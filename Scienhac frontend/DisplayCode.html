@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/night-owl.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <title>HTML</title>
+
+  <!-- HTML -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .code-container {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      cursor: text;
+    }
+
+    code{
+      max-height: 100px;
+      overflow-y: auto;
+    }
+    
+    .btn_copy{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 1em;
+      right: 0em;
+      width: 4em;
+      height: 2em;
+    }
+    .code-container button {
+      position: absolute;
+      background-image: linear-gradient(45deg, rgba(36, 36, 43, 0.5), rgba(54, 45, 45, 0.596));
+      opacity: 0.5;
+      border-radius: 20px;
+      display: none;
+    }
+
+
+    /*.code-container:hover button, .code-block:hover > .code-container button {
+      display: block;
+    }*/
+    .code-container:hover button{
+      display: block;
+    }
+  </style>
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="code-container">
+    <pre class="code-block">
+      <code>
+        &lt;html&gt;
+        &lt;div class="do"&gt;&lt;/div&gt;
+        &lt;p&gt;This is a paragraph &lt;/p&gt;
+        &lt;/html&gt;
+      </code>
+    </pre>    
+  </div>
+
+  <div class="code-container">
+    <pre class="code-block">
+      <code>
+        &lt;html&gt;
+        &lt;div class="do"&gt;&lt;/div&gt;
+        &lt;p&gt;This is a paragraph &lt;/p&gt;
+        &lt;/html&gt;&lt;html&gt;
+        &lt;div class="do"&gt;&lt;/div&gt;
+        &lt;p&gt;This is a paragraph &lt;/p&gt;
+        &lt;/html&gt;
+      </code>
+    </pre>
+  </div>
+  <div>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt non, consectetur incidunt assumenda saepe autem eveniet sed necessitatibus quos corrupti dolor nisi natus cum optio officiis fuga odit nemo odio dicta temporibus fugit. Fuga ex sed veniam placeat similique. Optio iste nihil debitis vel quisquam, totam accusantium voluptates ipsum nisi ipsa delectus praesentium aliquid eius nulla aperiam veniam ab fugiat molestias. Voluptatibus sequi quo reiciendis perspiciatis repellat necessitatibus eos vel, maiores ratione nobis placeat, nihil doloremque sapiente, quae assumenda obcaecati fugiat voluptate quibusdam! Consequuntur illo doloribus ipsam rem? Nobis sequi quaerat sunt, suscipit laboriosam expedita qui architecto placeat. Laboriosam, sit.
+    </p>
+  </div>
+  <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js'></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+  <script>
+    let x = () =>{
+      var codeContainer = document.querySelectorAll('.code-container');
+      var codeBlocks = document.querySelectorAll('.code-block');
+      for(let i = 0;i<codeContainer.length;i++){ 
+        var btn_p = document.createElement('div');
+        btn_p.setAttribute('class','btn_copy');
+        codeContainer[i].appendChild(btn_p);
+        btn_p.innerHTML='<button class="copy-button">Copy</button>';
+    }
+    var copyButtons = document.querySelectorAll('.copy-button');
+    
+    copyButtons.forEach(function (copyButton, index) {
+      var clipboard = new ClipboardJS(copyButton, {
+        target: function () {
+          return codeBlocks[index];
+        }
+      });
+      let copy_val = copyButton.innerText;
+      clipboard.on('success', function (e) {
+        copyButton.innerText = 'Copied!';
+        setTimeout(()=>{
+          copyButton.innerText = copy_val;
+        },500)
+        e.clearSelection();
+      });
+    });
+  }
+  x();
+</script>
+<script src="main.js"></script>
+
+</body>
+
+</html>

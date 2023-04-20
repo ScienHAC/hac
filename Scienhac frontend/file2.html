@@ -1,0 +1,191 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- comment read ability access -->
+
+<!--<body>
+    <div id="comments"></div>
+
+    <div id="comment-form">
+        <textarea id="comment-text" placeholder="Write your comment here"></textarea>
+        <button id="submit-comment" onclick="submitComment()">Post Comment</button>
+    </div>
+    <script src="https://www.blogger.com/static/v1/jsbin/468907129-api__en_us.js"></script>
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://apis.google.com/js/platform.js"></script>
+
+    <script>
+        var CLIENT_ID = '841600855792-op7pjbmca6bk3s9f3rlaufhlhd9uv5di.apps.googleusercontent.com'; // Replace with your own client ID
+        var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/blogger/v3/rest"];
+        var SCOPES = "https://www.googleapis.com/auth/blogger";
+
+        var blogID = '9160331485130872315'; // Replace with your own blog ID
+        var postID = '943659869113432918'; // Replace with your own post ID
+
+        function handleClientLoad() {
+            gapi.load('client:auth2', initClient);
+        }
+
+        function initClient() {
+            gapi.client.init({
+                apiKey: 'AIzaSyDZhYG2aZx-9XbFzJHi0H6Xjqn2Ntvbbqo', // Replace with your own API key
+                clientId: CLIENT_ID,
+                discoveryDocs: DISCOVERY_DOCS,
+                scope: SCOPES
+            }).then(function () {
+                gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+                updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+            }, function (error) {
+                console.log(JSON.stringify(error, null, 2));
+            });
+        }
+
+        function updateSigninStatus(isSignedIn) {
+            if (isSignedIn) {
+                document.getElementById('submit-comment').disabled = false;
+            } else {
+                document.getElementById('submit-comment').disabled = true;
+            }
+        }
+
+        function submitComment() {
+            var comment = document.getElementById('comment-text').value;
+
+            gapi.client.blogger.comments.insert({
+                'blogId': blogID,
+                'postId': postID,
+                'body': comment
+            }).execute(function (response) {
+                console.log(JSON.stringify(response, null, 2));
+                document.getElementById('comment-text').value = '';
+                getComments();
+            });
+        }
+
+        function getComments() {
+            gapi.load('client', function() {
+                gapi.client.load('blogger', 'v3', function() {
+            gapi.client.blogger.comments.list({
+                'blogId': blogID,
+                'postId': postID
+            }).execute(function (response) {
+                console.log(JSON.stringify(response, null, 2));
+                var comments = document.getElementById('comments');
+                comments.innerHTML = '';
+                if (response.items) {
+                    for (var i = 0; i < response.items.length; i++) {
+                        var comment = response.items[i];
+                        var author = comment.author.displayName;
+                        var content = comment.content;
+                        var date = new Date(comment.published).toLocaleDateString();
+                        comments.innerHTML += '<div class="comment"><span class="author">' + author + '</span> <span class="date">' + date + '</span><p class="content">' + content + '</p></div>';
+                    }
+                } else {
+                    comments.innerHTML = '<p>No comments yet.</p>';
+                }
+            });
+        });
+        });
+        }
+
+        handleClientLoad();
+        getComments();
+
+    </script>
+
+    <script>
+        fetch('https://www.googleapis.com/blogger/v3/blogs/5907456137895610259/posts/4772530681493912792/comments?key=AIzaSyDZhYG2aZx-9XbFzJHi0H6Xjqn2Ntvbbqo', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+            },
+        })
+            .then(response => response.json())
+            .then((response) => {
+                let x_lts = JSON.stringify(response);
+                t = JSON.parse(x_lts);
+                for (let i = 0; i < t["items"].length; i++) {
+                    console.log(t["items"][i]["content"]);
+                };
+            });
+    </script>
+</body>
+
+</html>-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Comment Form</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<h1>Comment Form</h1>
+	<form id="comment-form">
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name" required><br><br>
+		<label for="comment">Comment:</label><br>
+		<textarea id="comment" name="comment" required></textarea><br><br>
+		<input type="submit" value="Submit">
+	</form>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://apis.google.com/js/platform.js"></script>
+    <script src="https://unpkg.com/request"></script>
+
+	<script>
+        extend.remove();
+        cookies.remove();
+        helpers.remove();
+		gapi.load('auth2', function() {
+			gapi.auth2.init({
+				client_id: 'AIzaSyDZhYG2aZx-9XbFzJHi0H6Xjqn2Ntvbbqo',
+				scope: 'https://www.googleapis.com/auth/blogger'
+			}).then(function(auth2) {
+				if (auth2.isSignedIn.get()) {
+					console.log('User is authenticated.');
+				} else {
+					console.log('User is not authenticated.');
+					auth2.signIn();
+				}
+			});
+		});
+
+		function postComment() {
+			var request = 
+            gapi.load('client', function() {
+                gapi.client.load('blogger', 'v3', function() {
+            gapi.client.blogger.comments.insert({
+				'blogId': blogID,
+				'postId': postID,
+				'isDraft': 'true',
+				'body': document.getElementById('comment').value,
+				'author': {
+					'displayName': document.getElementById('name').value
+				}
+			});
+        });
+        });
+			request.execute(function(comment) {
+				console.log('Comment posted: ' + comment.id);
+				document.getElementById('comment-form').reset();
+				alert('Comment posted!');
+			});
+			return false;
+		}
+
+		document.getElementById('comment-form').addEventListener('submit', function(e) {
+			e.preventDefault();
+			gapi.auth2.getAuthInstance().signIn().then(postComment);
+		});
+	</script>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+</body>
+</html>

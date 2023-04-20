@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <title>Blogger API Example</title>
+</head>
+
+<body>
+    <div id="content"></div>
+    <script>
+        function handleResponse(response) {
+            document.getElementById("content").innerHTML += "<h1>" + response.title + "</h1>" + response.content;
+        }
+    </script>
+    <script
+        src="https://www.googleapis.com/blogger/v3/blogs/9160331485130872315/posts/943659869113432918?callback=handleResponse&key=AIzaSyDZhYG2aZx-9XbFzJHi0H6Xjqn2Ntvbbqo"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+
+    <script>
+        gapi.load('client:auth2', function () {
+            // Initialize the GoogleAuth object
+            gapi.auth2.init({
+                client_id: '841600855792-op7pjbmca6bk3s9f3rlaufhlhd9uv5di.apps.googleusercontent.com'
+            }).then(function () {
+                // Sign in the user
+                return gapi.auth2.getAuthInstance().signIn();
+            }).then(function () {
+                // Get the access token
+                const accessToken = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
+                console.log('Access token:', accessToken);
+            }).catch(function (error) {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+    <script>
+        gapi.load('client:auth2', function () {
+            // Initialize the GoogleAuth object
+            gapi.auth2.init({
+                client_id: '841600855792-op7pjbmca6bk3s9f3rlaufhlhd9uv5di.apps.googleusercontent.com'
+            }).then(function () {
+                // Sign in the user
+                return gapi.auth2.getAuthInstance().signIn();
+            }).then(function () {
+                // Get the access token
+                const accessToken = gapi.auth2.getAuthInstance().currentUser.get().getAuthResponse().access_token;
+                console.log('Access token:', accessToken);
+            }).catch(function (error) {
+                console.error('Error:', error);
+            });
+        });
+        gapi.load('client', function () {
+            gapi.client.init({
+                apiKey: 'AIzaSyDZhYG2aZx-9XbFzJHi0H6Xjqn2Ntvbbqo',
+                discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/blogger/v3/rest"],
+            }).then(function () {
+                console.log('gapi initialized');
+            }).then(function () {
+                // Set up comment data
+                var commentData = {
+                    'content': 'This is a test comment.'
+                };
+
+                // Insert the comment
+                return gapi.client.blogger.comments.insert({
+                    'blogId': blogID,
+                    'postId': postID,
+                    'resource': commentData
+                });
+            }).then(function (response) {
+                console.log(response.result);
+            }, function (error) {
+                console.error(error);
+            }).catch(function (error) {
+                console.error('Error initializing gapi:', error);
+            });
+        });
+
+    </script>
+</body>
+
+</html>

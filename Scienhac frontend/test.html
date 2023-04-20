@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="comments">
+        <h2>Comments</h2>
+        <ul id="comment-list"></ul>
+        <form id="comment-form">
+            <label for="name-input">Name:</label>
+            <input type="text" id="name-input" required />
+            <label for="email-input">Email:</label>
+            <input type="email" id="email-input" required />
+            <label for="comment-input">Comment:</label>
+            <textarea id="comment-input" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <div id="comment-container"></div>
+    <script>
+        let x = document.querySelector('#comment-form');
+        x.addEventListener('submit', (event) => {
+            event.preventDefault();
+        });
+        const postID = '943659869113432918';
+        const blogID = '9160331485130872315';
+        const apiKey = 'AIzaSyDZhYG2aZx-9XbFzJHi0H6Xjqn2Ntvbbqo';
+
+        // Retrieve existing comments and display them on the page
+        function getComments(postID) {
+            const requestUrl = `https://www.googleapis.com/blogger/v3/blogs/${blogID}/posts/${postID}/comments?key=${apiKey}`;
+
+            fetch(requestUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const comments = data.items;
+                    comments.forEach(comment => {
+                        const commentHtml = `
+                <div class="comment">
+                    <p class="comment-author">${comment.author.displayName} says:</p>
+                    <p class="comment-text">${comment.content}</p>
+                </div>
+                `;
+                        document.getElementById('comment-container').insertAdjacentHTML('beforeend', commentHtml);
+                    });
+                })
+                .catch(error => console.error(error));
+        }
+
+        // Post a new comment
+        function postComment(postID, name, email, comment) {
+            const requestUrl = `https://www.googleapis.com/blogger/v3/blogs/${blogID}/posts/${postID}/comments?key=${apiKey}`;
+
+            const commentData = {
+                content: comment,
+                author: {
+                    displayName: name
+                },
+                blog: {
+                    id: blogID
+                },
+                post: {
+                    id: postID
+                }
+            };
+
+            fetch(requestUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(commentData)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Add the new comment to the comment container
+                    const commentHtml = `
+                <div class="comment">
+                <p class="comment-author">${data.author.displayName} says:</p>
+                <p class="comment-text">${data.content}</p>
+                </div>
+            `;
+                    document.getElementById('comment-container').insertAdjacentHTML('beforeend', commentHtml);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+
+        // Attach event listener to the comment form
+        document.getElementById('comment-form').addEventListener('submit', event => {
+            event.preventDefault();
+
+            const name = document.getElementById('name-input').value;
+            const email = document.getElementById('email-input').value;
+            const comment = document.getElementById('comment-input').value;
+
+            // Post the new comment
+            postComment(postID, name, email, comment);
+
+            // Clear the input fields
+            document.getElementById('name-input').value = '';
+            document.getElementById('email-input').value = '';
+            document.getElementById('comment-input').value = '';
+        });
+
+        // Call getComments to retrieve existing comments
+        getComments(postID);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="xyz.css">
+</head>
+
+<body>
+    <div class="a"></div>
+    <div id="scrollbar" style="height: 100vh; width: 20px; background-color: grey; position: relative;">
+        <div id="scroll-thumb"
+            style="height: 50px; width: 20px; background-color: blue; position: absolute; top: 0; left: 0;"></div>
+    </div>
+
+    <script>
+        // Get the scrollbar and scroll thumb elements
+        const scrollbar = document.getElementById('scrollbar');
+        const scrollThumb = document.getElementById('scroll-thumb');
+
+        // Set the initial state
+        let isDragging = false;
+        let startY = 0;
+        let scrollTop = 0;
+
+        // Add event listeners
+        scrollThumb.addEventListener('mousedown', function (e) {
+            isDragging = true;
+            startY = e.clientY - scrollThumb.offsetTop;
+            scrollTop = scrollbar.scrollTop;
+        });
+
+        document.addEventListener('mousemove', function (e) {
+            if (isDragging) {
+                const newTop = e.clientY - startY;
+                scrollThumb.style.top = `${newTop}px`;
+                const scrollAmount = newTop / scrollbar.clientHeight * scrollbar.scrollHeight;
+                scrollbar.scrollTop = scrollTop + scrollAmount;
+            }
+        });
+
+        document.addEventListener('mouseup', function (e) {
+            isDragging = false;
+        });
+
+        /*const styles = window.getComputedStyle(scrollThumb);
+        const backgroundColor = styles.getPropertyValue('height');
+        console.log(backgroundColor);
+        new1 = backgroundColor.replace('px','')
+        
+            //Csh = (window.innerHeight / document.documentElement.scrollHeight) * scrollThumb.offsetHeight;
+            //scrollThumb.style.height = `${Csh}vh`;
+                        const trackHeight = scrollbar.clientHeight;
+            const contentHeight = document.documentElement.scrollHeight;
+            const scrollThumbHeight = Math.max(trackHeight * (trackHeight / contentHeight), 30); // set minimum height of thumb to 30px
+
+            // Set the height of the scroll thumb
+            scrollThumb.style.height = `${scrollThumbHeight}px`;
+            const styles = window.getComputedStyle(scrollThumb);
+            const backgroundColor = styles.getPropertyValue('height');
+            console.log(backgroundColor);*/
+
+
+
+
+
+            
+        /*let Cst = document.createElement('div');
+        Cst.setAttribute('class', 'custom-scrollbar-track');
+        document.body.appendChild(Cst);
+        let Csb = document.createElement('div');
+        Csb.setAttribute('class', 'custom-scrollbar');
+        document.querySelector('.custom-scrollbar-track').appendChild(Csb);
+
+        const scrollbar = document.querySelector('.custom-scrollbar-track');
+        const scrollThumb = document.querySelector('.custom-scrollbar');
+
+
+        scrollbar.addEventListener('mousedown', function (event) {
+            const clickPosition = event.clientY - scrollbar.getBoundingClientRect().top;
+            const thumbHeight = scrollThumb.getBoundingClientRect().height;
+            const trackHeight = scrollbar.getBoundingClientRect().height;
+            const thumbPosition = clickPosition - (thumbHeight / 2);
+            const maxThumbTop = trackHeight - thumbHeight;
+            const newThumbTop = Math.min(Math.max(thumbPosition, 0), maxThumbTop);
+            scrollThumb.style.transition = 'all 1 ease-in';
+            scrollThumb.style.top = `${newThumbTop}px`;
+        });
+
+        const viewportHeight = window.innerHeight;
+        let isDragging = false;
+        let startY = 0;
+        let scrollTop = 0;
+        const scrollThumbHeight = scrollThumb.offsetHeight;
+        const trackHeight = scrollbar.offsetHeight;
+
+        const minThumbTop = 0;
+        const maxThumbTop = trackHeight - scrollThumbHeight;
+
+        scrollThumb.addEventListener('mousedown', function (e) {
+            document.body.style.cursor = 'grab';
+            isDragging = true;
+            startY = e.clientY - scrollThumb.offsetTop;
+            scrollTop = scrollbar.scrollTop;
+            e.preventDefault();
+        });
+
+
+
+        document.addEventListener("DOMContentLoaded", function (e) {
+
+
+            if (document.documentElement.scrollHeight > window.innerHeight) {
+                document.querySelector('.custom-scrollbar-track,.custom-scrollbar-track').style.display = 'block';
+            } else {
+                document.querySelector('.custom-scrollbar-track,.custom-scrollbar-track').style.display = 'none';
+            }
+            function checkScrollbarVisibility() {
+                const contentHeight = document.documentElement.scrollHeight;
+                const windowHeight = window.innerHeight;
+                const isScrollable = contentHeight > windowHeight;
+                if (isScrollable) {
+                    scrollThumb.style.display = 'block';
+                    scrollbar.style.display = 'block';
+                } else {
+                    scrollThumb.style.display = 'none';
+                    scrollbar.style.display = 'none';
+                }
+            }
+
+            
+
+            checkScrollbarVisibility();
+
+            window.addEventListener('resize', checkScrollbarVisibility);
+
+
+
+            totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.addEventListener('mousemove', function (e) {
+                if (isDragging) {
+                    let newTop = e.clientY - startY;
+                    newTop = Math.max(newTop, minThumbTop);
+                    newTop = Math.min(newTop, maxThumbTop);
+                    scrollThumb.style.top = `${newTop}px`;
+                    const scrollPercent = newTop / maxThumbTop;
+                    const contentHeight = document.documentElement.scrollHeight;
+                    const totalScrollHeight = contentHeight - window.innerHeight;
+                    const ScrollPosition = totalScrollHeight * scrollPercent;
+                    window.scrollTo({
+                        top: ScrollPosition,
+                        left: 0,
+                    });
+                    e.preventDefault();
+                }
+            });
+            e.preventDefault();
+        });
+
+        window.addEventListener('scroll', (e) => {
+
+            const pxToVh = (scrollThumbHeight / viewportHeight) * 100;
+            totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const initialThumbTop = (parseInt(scrollThumb.style.top) + scrollThumb.offsetHeight) / window.innerHeight * 100 - pxToVh;
+            scrollThumb.style.top = `${initialThumbTop}vh`;
+            hgA = (scrollbar.offsetHeight / window.innerHeight) * 100 - pxToVh;
+            scrollThumb.style.top = `${(window.scrollY / totalHeight) * hgA}vh`;
+            e.preventDefault();
+        });
+
+
+        document.addEventListener('mouseup', function (e) {
+            document.body.style.cursor = 'auto';
+            isDragging = false;
+            e.preventDefault();
+        });*/
+
+    </script>
+</body>
+
+</html>

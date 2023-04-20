@@ -1,0 +1,365 @@
+.a {
+    width: 100px;
+    height: 100px;
+    background-image: linear-gradient(45deg, red, blue);
+    animation: pgr 1s ease-in infinite forwards;
+    -webkit-animation: pgr 5s linear infinite;
+}
+
+@keyframes pgr {
+    from {
+        filter: blur(10px) hue-rotate(0deg);
+        -webkit-filter: blur(10px) hue-rotate(0deg);
+    }
+
+    to {
+        filter: blur(30px) hue-rotate(360deg);
+    }
+}
+
+@keyframes type {
+
+    0%,
+    100% {
+        filter: hue-rotate(0deg);
+    }
+
+    50% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+@keyframes pgr {
+
+    0%,
+    100% {
+        filter: hue-rotate(0deg);
+    }
+
+    50% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+.mainbtn:hover {
+    opacity: 0.9;
+    filter: brightness(120%) drop-shadow(1px 4px rgba(23, 32, 36, 0.932));
+}
+
+.mainbtn::after {
+    content: '';
+    opacity: 1;
+    filter: brightness(200%);
+}
+
+.mainbtn::before {
+    content: '';
+    opacity: 1;
+}
+
+.mainbtn:active {
+    padding: 3% 5% 3% 5%;
+    opacity: 0.9;
+    filter: contrast(120%);
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+
+.custom-scrollbar-track {
+    overflow: hidden;
+    background: blue;
+    position: fixed;
+    width: 20px;
+    margin-top: 5vh;
+    height: 90vh;
+    top: 0;
+    right: 0;
+}
+
+.custom-scrollbar {
+    top: 0;
+    overflow: hidden;
+    position: relative;
+    width: 20px;
+    height: 10vh;
+    background-color: red;
+}
+
+.custom-scrollbar:active {
+    cursor: grab;
+    user-select: none;
+}
+
+.custom-scrollbar:hover {
+    cursor: grab;
+    user-select: none;
+}
+
+
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+
+.custom-scrollbar-track {
+    visibility: hidden;
+    border-radius: 5px;
+    overflow: hidden;
+    background-image: linear-gradient(to top, #52595e, #121f2c);
+    position: fixed;
+    width: 10px;
+    margin-top: 7vh;
+    height: 80vh;
+    top: 0;
+    right: 0;
+    animation: scbar1 5s ease-in-out infinite forwards reverse;
+}
+
+.custom-scrollbar-track:hover {
+    transform: scale(2, 2);
+    visibility: visible;
+    opacity: 0.7;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: blue;
+    position: fixed;
+    width: 10px;
+    margin-top: 7vh;
+    height: 80vh;
+    top: 0;
+    right: 0;
+    animation: scbar1 5s ease-in-out infinite forwards;
+    -webkit-transform: scale(2, 2);
+    -moz-transform: scale(2, 2);
+    -ms-transform: scale(2, 2);
+    -o-transform: scale(2, 2);
+}
+
+.custom-scrollbar {
+    transform: scale(4, 4);
+    box-shadow: 0px 3px 1px rgba(27, 57, 66, 0.781);
+    visibility: visible;
+    border-radius: 40px;
+    top: 0;
+    overflow: hidden;
+    position: relative;
+    width: 10px;
+    height: 10vh;
+    background-image: linear-gradient(to top, #833ab4, #fd1d1d, #fcb045);
+    animation: scbar2 5s ease-in-out infinite forwards alternate;
+    -webkit-transform: scale(4, 4);
+    -moz-transform: scale(4, 4);
+    -ms-transform: scale(4, 4);
+    -o-transform: scale(4, 4);
+}
+
+.custom-scrollbar::before {
+    content: '';
+    filter: blur(10px);
+    box-shadow: 0px 3px 1px rgba(27, 57, 66, 0.781);
+    visibility: visible;
+    border-radius: 10px;
+    top: 0;
+    overflow: hidden;
+    position: relative;
+    width: 10px;
+    height: 10vh;
+    background-image: linear-gradient(to top, #833ab4, #fd1d1d, #fcb045);
+}
+
+.custom-scrollbar::after {
+    content: '';
+    filter: blur(30px);
+    box-shadow: 0px 3px 1px rgba(27, 57, 66, 0.781);
+    visibility: visible;
+    border-radius: 10px;
+    top: 0;
+    overflow: hidden;
+    position: relative;
+    width: 10px;
+    height: 10vh;
+    background-image: linear-gradient(to top, #833ab4, #fd1d1d, #fcb045);
+}
+
+@keyframes scbar1 {
+
+    0%,
+    100% {
+        filter: opacity(1) brightness(100%) contrast(100%) hue-rotate(0deg);
+    }
+
+    50% {
+        filter: opacity(1) brightness(200%) contrast(150%) hue-rotate(360deg);
+    }
+}
+
+@keyframes scbar2 {
+
+    0%,
+    100% {
+        filter: contrast(120%) drop-shadow(0px 0px 0px hsla(189, 13%, 20%, 0.473)) opacity(1) hue-rotate(0deg);
+    }
+
+    50% {
+        filter: contrast(150%) drop-shadow(0px 3px 5px hsla(189, 13%, 20%, 0.473)) opacity(1) hue-rotate(360deg);
+    }
+}
+
+
+@keyframes scbar3 {
+
+    0%,
+    100% {
+        filter: opacity(1) brightness(100%) contrast(100%) hue-rotate(0deg);
+    }
+
+    50% {
+        filter: opacity(0.7) brightness(200%) contrast(200%) hue-rotate(360deg);
+    }
+}
+
+.custom-scrollbar:active {
+    animation: scbar3 5s ease-in-out infinite forwards;
+    cursor: grab;
+    user-select: none;
+}
+
+.custom-scrollbar:hover {
+    cursor: grab;
+    user-select: none;
+    animation: scbar3 5s ease-in-out infinite forwards;
+}
+
+
+
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+
+.custom-scrollbar-track {
+    visibility: hidden;
+    border-radius: 40px;
+    overflow: hidden;
+    background-image: linear-gradient(to top, #52595e, #121f2c);
+    position: fixed;
+    width: 10px;
+    margin-top: 7vh;
+    height: 80vh;
+    top: 0;
+    right: 0;
+    animation: scbar1 5s ease-in-out infinite forwards reverse;
+}
+
+.custom-scrollbar-track:hover {
+    visibility: visible;
+    opacity: 0.7;
+    border-radius: 100px;
+    overflow: hidden;
+    background-color: blue;
+    position: fixed;
+    width: 20px;
+    margin-top: 7vh;
+    height: 80vh;
+    top: 0;
+    right: 0;
+    animation: scbar1 5s ease-in-out infinite forwards;
+}
+
+.custom-scrollbar {
+    box-shadow: 0px 3px 1px rgba(27, 57, 66, 0.781);
+    visibility: visible;
+    border-radius: 40px;
+    top: 0;
+    overflow: hidden;
+    position: relative;
+    width: 10px;
+    height: 10vh;
+    background-image: linear-gradient(to top, #833ab4, #fd1d1d, #fcb045);
+    animation: scbar2 5s ease-in-out infinite forwards alternate;
+}
+
+.custom-scrollbar::before {
+    content: '';
+    filter: blur(10px);
+    box-shadow: 0px 3px 1px rgba(27, 57, 66, 0.781);
+    visibility: visible;
+    border-radius: 40px;
+    top: 0;
+    overflow: hidden;
+    position: relative;
+    width: 10px;
+    height: 10vh;
+    background-image: linear-gradient(to top, #833ab4, #fd1d1d, #fcb045);
+}
+
+.custom-scrollbar::after {
+    content: '';
+    filter: blur(30px);
+    box-shadow: 0px 3px 1px rgba(27, 57, 66, 0.781);
+    visibility: visible;
+    border-radius: 40px;
+    top: 0;
+    overflow: hidden;
+    position: relative;
+    width: 10px;
+    height: 10vh;
+    background-image: linear-gradient(to top, #833ab4, #fd1d1d, #fcb045);
+}
+
+@keyframes scbar1 {
+
+    0%,
+    100% {
+        filter: opacity(1) brightness(100%) contrast(100%) hue-rotate(0deg);
+    }
+
+    50% {
+        filter: opacity(1) brightness(200%) contrast(150%) hue-rotate(360deg);
+    }
+}
+
+@keyframes scbar2 {
+
+    0%,
+    100% {
+        filter: contrast(120%) drop-shadow(0px 0px 0px hsla(189, 13%, 20%, 0.473)) opacity(1) hue-rotate(0deg);
+    }
+
+    50% {
+        filter: contrast(150%) drop-shadow(0px 3px 5px hsla(189, 13%, 20%, 0.473)) opacity(1) hue-rotate(360deg);
+    }
+}
+
+
+@keyframes scbar3 {
+
+    0%,
+    100% {
+        filter: opacity(1) brightness(100%) contrast(100%) hue-rotate(0deg);
+        -webkit-filter: opacity(1) brightness(100%) contrast(100%) hue-rotate(0deg);
+}
+
+    50% {
+        filter: opacity(0.7) brightness(200%) contrast(200%) hue-rotate(360deg);
+    }
+}
+
+.custom-scrollbar:active {
+    border-radius: 100px;
+    width: 20px;
+    animation: scbar3 5s ease-in-out infinite forwards;
+    cursor: grab;
+    user-select: none;
+}
+
+.custom-scrollbar:hover {
+    border-radius: 100px;
+    width: 20px;
+    cursor: grab;
+    user-select: none;
+    animation: scbar3 5s ease-in-out infinite forwards;
+}
